@@ -49,11 +49,11 @@
 (defvar worldend2-default-epub-view-method 'emacs
   "Default method for viewing the generated EPUB.")
 
-(defvar worldend2-pdf-extra-args ""
-  "Extra arguments for PDF compilation.")
+(defvar worldend2-pdf-generation-extra-args ""
+  "Extra arguments for PDF generation.")
 
-(defvar worldend2-epub-extra-args ""
-  "Extra arguments for EPUB compilation.")
+(defvar worldend2-epub-generation-extra-args ""
+  "Extra arguments for EPUB generation.")
 
 ;; MAIN FUNCTIONS
 
@@ -76,7 +76,7 @@ volume number and extra arguments."
            (output-path (format "%s/Output_v%02d" worldend2-git-repo vol-number))
            (command (format "python \"%s\" \"%s\" \"%s\" %s"
                             script-path input-path output-path
-                            (if extra-args extra-args worldend2-pdf-extra-args))))
+                            (if extra-args extra-args worldend2-pdf-generation-extra-args))))
       (venv-workon worldend2-venv-name)
       (async-shell-command
        command
@@ -102,7 +102,7 @@ volume number and extra arguments."
            (output-path (format "%s/Output_v%02d" worldend2-git-repo vol-number))
            (command (format "python \"%s\" \"%s\" \"%s\" %s"
                             script-path input-path output-path
-                            (if extra-args extra-args worldend2-epub-extra-args))))
+                            (if extra-args extra-args worldend2-epub-generation-extra-args))))
       (venv-workon worldend2-venv-name)
       (async-shell-command
        command
