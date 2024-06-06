@@ -37,14 +37,14 @@ There are a few variables that you can set, which are summarized in the followin
 
 *NOTE:* I have added zero-width spaces to the values in the ~Default~ column so that GitHub can display the code correctly.
 
-| Variable                             | Default                    | Description                                   |
-|--------------------------------------+----------------------------+-----------------------------------------------|
-| ~worldend2-git-repo~                 | ~​"​~/worldend2-formatting"​~ | Path to the git repository                    |
-| ~worldend2-venv-name~                | ~​"worldend2-formatting"​~   | Name of the virtual environment               |
-| ~worldend2-default-pdf-view-method~  | ~​'emacs​~                   | Default method for viewing the generated PDF  |
-| ~worldend2-default-epub-view-method~ | ~​'emacs​~                   | Default method for viewing the generated EPUB |
-| ~worldend2-pdf-extra-args~           | ~​""​~                       | Extra arguments for PDF compilation           |
-| ~worldend2-epub-extra-args~          | ~​""​~                       | Extra arguments for EPUB compilation          |
+| Variable                               | Default                    | Description                                   |
+|----------------------------------------+----------------------------+-----------------------------------------------|
+| ~worldend2-git-repo~                   | ~​"​~/worldend2-formatting"​~ | Path to the git repository                    |
+| ~worldend2-venv-name~                  | ~​"worldend2-formatting"​~   | Name of the virtual environment               |
+| ~worldend2-default-pdf-view-method~    | ~​'emacs​~                   | Default method for viewing the generated PDF  |
+| ~worldend2-default-epub-view-method~   | ~​'emacs​~                   | Default method for viewing the generated EPUB |
+| ~worldend2-pdf-generation-extra-args~  | ~​""​~                       | Extra arguments for PDF generation            |
+| ~worldend2-epub-generation-extra-args~ | ~​""​~                       | Extra arguments for EPUB generation           |
 
 Every variable except for ~worldend2-git-repo~ and ~worldend2-venv-name~ can be overridden at runtime using the Transient menu, by passing the value in when calling the function, or by pressing the universal argument (~C-u~) when calling interactively.
 
