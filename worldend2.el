@@ -219,12 +219,17 @@ the specified function."
 (transient-define-prefix worldend2--generate-pdf ()
   "WorldEnd2 Formatting submenu for generating PDF."
   ["Options"
-   ("-b" "bleed" "--bleed")
+   ("-b" "bleed size" "--bleed-size="
+    :prompt "Enter bleed size: ")
+   ("-g" "gutter size" "--gutter-size="
+    :prompt "Enter gutter size: ")
+   ("-n" "no cover" "--no-cover")
    ("-v" "verbose" "--verbose")
    ("-s" "skip images" "--skip-images")
    ("-d" "don't print images" "--dont-print-images")
    ("-x" "xelatex command" "--xelatex-command-line="
-    :prompt "Enter xelatex command: ")]
+    :prompt "Enter xelatex command: ")
+   ("-p" "print mode" "--print-mode")]
   ["Help"
    ("h" "Print help" (lambda () (interactive) (worldend2-generate-pdf -1 "-h")))]
   [:class transient-columns
@@ -240,8 +245,8 @@ the specified function."
                             (worldend2--with-volume-number #'worldend2-generate-pdf "-v")))
            ("q" "Quick" (lambda () (interactive)
                           (worldend2--with-volume-number #'worldend2-generate-pdf "-d -s")))
-           ("b" "Bleed" (lambda () (interactive)
-                          (worldend2--with-volume-number #'worldend2-generate-pdf "-b")))
+           ("r" "Print" (lambda () (interactive)
+                          (worldend2--with-volume-number #'worldend2-generate-pdf "-p")))
            ("d" "Debug" (lambda () (interactive)
                           (worldend2--with-volume-number #'worldend2-generate-pdf "-v -d -s")))]])
 
