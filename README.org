@@ -10,15 +10,15 @@ The main repository containing the volume text and Python tools responsible for 
 This package depends on [[https://github.com/porterjamesj/virtualenvwrapper.el][virtualenvwrapper]] and [[https://github.com/magit/transient][Transient]].
 
 * Usage
-Since this is not on MELPA, you need to clone this to a local directory (i.e. =~/.config/emacs/site-lisp/worldend2.el/= or =~/.config/doom/lisp/worldend2.el/=).
+Since this is not on MELPA, you need to clone this to a local directory (i.e. =~/.config/emacs/site-lisp/worldend2/= or =~/.config/doom/lisp/worldend2/=).
 
-Once you have the dependencies installed, you just need to load and set a keybinding for ~worldend2-transient-menu~:
+You also need a Python virtual environment in =~/.virtualenvs/worldend2-formatting= (customized by ~worldend2-venv-name~).
 
-*NOTE:* This has only been tested on Doom Emacs.
+Once you have that done, you just need to load and set a keybinding for ~worldend2-transient-menu~:
 
 *Doom Emacs*
 #+begin_src emacs-lisp
-(load! "lisp/worldend2.el/worldend2")
+(load! "lisp/worldend2/worldend2")
 
 (map! :leader
       :desc "Launch WorldEnd2 menu"
@@ -63,7 +63,7 @@ There are 4 functions that you can use if you don't want to use the Transient me
 ** Example Configuration
 *Doom Emacs*
 #+begin_src emacs-lisp
-(load! "lisp/worldend2")
+(load! "lisp/worldend2/worldend2")
 (setq worldend2-git-repo (expand-file-name "~/worldend2-formatting"))
 (setq worldend2-venv-name "worldend2-formatting")
 (setq worldend2-default-pdf-view-method "zathura") ; Default is 'emacs
