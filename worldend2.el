@@ -26,7 +26,7 @@
 ;; interactive user interface for generating and viewing volumes.
 ;; You can find the volume text and Python tools responsible for the
 ;; backend functionality in the git repository:
-;; <https://github.com/WorldEnd-Formatting/worldend2-formatting>.
+;; <https://github.com/WorldEnd/worldend-formatting>.
 
 ;;; Code:
 
@@ -37,10 +37,10 @@
 (require 'transient)
 
 ;; VARIABLES
-(defvar worldend2-git-repo (expand-file-name "~/worldend2-formatting")
+(defvar worldend2-git-repo (expand-file-name "~/worldend-formatting")
   "Path to the git repository.")
 
-(defvar worldend2-venv-name "worldend2-formatting"
+(defvar worldend2-venv-name "worldend-formatting"
   "Name of the virtual environment.")
 
 (defvar worldend2-default-pdf-view-method 'emacs
@@ -72,7 +72,7 @@ volume number and extra arguments."
   (if (or (not vol-number) (= vol-number 0))
       (message "You need to specify the volume number")
     (let* ((script-path (format "%s/Scripts/output_tex.py" worldend2-git-repo))
-           (input-path (format "%s/Volumes/Volume %d/" worldend2-git-repo vol-number))
+           (input-path (format "%s/Volumes/Volume_%02d/" worldend2-git-repo vol-number))
            (output-path (format "%s/Output_v%02d" worldend2-git-repo vol-number))
            (command (format "python \"%s\" \"%s\" \"%s\" %s"
                             script-path input-path output-path
@@ -98,7 +98,7 @@ volume number and extra arguments."
   (if (or (not vol-number) (= vol-number 0))
       (message "You need to specify the volume number")
     (let* ((script-path (format "%s/Scripts/output_epub.py" worldend2-git-repo))
-           (input-path (format "%s/Volumes/Volume %d/" worldend2-git-repo vol-number))
+           (input-path (format "%s/Volumes/Volume_%02d/" worldend2-git-repo vol-number))
            (output-path (format "%s/Output_v%02d" worldend2-git-repo vol-number))
            (command (format "python \"%s\" \"%s\" \"%s\" %s"
                             script-path input-path output-path
@@ -142,7 +142,7 @@ the PDF viewer."
   (if (or (not vol-number) (= vol-number 0))
       (message "You need to specify the volume number")
     (let* ((file-path
-            (format "%1$s/Output_v%2$02d/WorldEnd2 v%2$02d.pdf"
+            (format "%1$s/Output_v%2$02d/WorldEnd2_v%2$02d.pdf"
                     worldend2-git-repo
                     vol-number)))
       (if program
@@ -167,7 +167,7 @@ the EPUB viewer."
   (if (or (not vol-number) (= vol-number 0))
       (message "You need to specify the volume number")
     (let* ((file-path
-            (format "%1$s/Output_v%2$02d/WorldEnd2 v%2$02d.epub"
+            (format "%1$s/Output_v%2$02d/WorldEnd2_v%2$02d.epub"
                     worldend2-git-repo
                     vol-number)))
       (if program
