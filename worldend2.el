@@ -223,13 +223,14 @@ the specified function."
     :prompt "Enter bleed size: ")
    ("-g" "gutter size" "--gutter-size="
     :prompt "Enter gutter size: ")
-   ("-n" "no cover" "--no-cover")
    ("-v" "verbose" "--verbose")
-   ("-s" "skip images" "--skip-images")
-   ("-d" "don't print images" "--dont-print-images")
    ("-x" "xelatex command" "--xelatex-command-line="
     :prompt "Enter xelatex command: ")
-   ("-p" "print mode" "--print-mode")]
+   ("-p" "print mode" "--print-mode")
+   ("-F" "no front cover" "--no-front-cover")
+   ("-B" "no back cover" "--no-back-cover")
+   ("-G" "skip image generation" "--skip-image-generation")
+   ("-I" "no images" "--no-images")]
   ["Help"
    ("h" "Print help" (lambda () (interactive) (worldend2-generate-pdf -1 "-h")))]
   [:class transient-columns
@@ -244,11 +245,11 @@ the specified function."
            ("v" "Verbose" (lambda () (interactive)
                             (worldend2--with-volume-number #'worldend2-generate-pdf "-v")))
            ("q" "Quick" (lambda () (interactive)
-                          (worldend2--with-volume-number #'worldend2-generate-pdf "-d -s")))
+                          (worldend2--with-volume-number #'worldend2-generate-pdf "-G -I")))
            ("r" "Print" (lambda () (interactive)
                           (worldend2--with-volume-number #'worldend2-generate-pdf "-p")))
            ("d" "Debug" (lambda () (interactive)
-                          (worldend2--with-volume-number #'worldend2-generate-pdf "-v -d -s")))]])
+                          (worldend2--with-volume-number #'worldend2-generate-pdf "-v -G -I")))]])
 
 (transient-define-prefix worldend2--generate-epub ()
   "WorldEnd2 Formatting submenu for generating EPUB."
