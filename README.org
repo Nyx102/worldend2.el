@@ -10,15 +10,22 @@ The main repository containing the volume text and Python tools responsible for 
 This package depends on [[https://github.com/porterjamesj/virtualenvwrapper.el][virtualenvwrapper]] and [[https://github.com/magit/transient][Transient]].
 
 * Usage
-Since this is not on MELPA, you need to clone this to a local directory (i.e. =~/.config/emacs/site-lisp/worldend2/= or =~/.config/doom/lisp/worldend2/=).
+Since this is not on MELPA, you need to clone this to a local directory (i.e. =~/.config/emacs/site-lisp/worldend2/= or =~/.config/doom/lisp/worldend2/=). You can also use a package recipe in Doom Emacs:
 
-You also need a Python virtual environment in =~/.virtualenvs/worldend2-formatting= (customized by ~worldend2-venv-name~).
+#+begin_src emacs-lisp
+(package! worldend2
+  :recipe (:host github :repo "Nyx102/worldend2.el"))
+#+end_src
+
+You need a Python virtual environment in =~/.virtualenvs/worldend2-formatting= (customized by ~worldend2-venv-name~).
 
 Once you have that done, you just need to load and set a keybinding for ~worldend2-transient-menu~:
 
 *Doom Emacs*
 #+begin_src emacs-lisp
-(load! "lisp/worldend2/worldend2")
+(require 'worldend2)
+;; Use the one below if you installed manually
+;; (load! "lisp/worldend2/worldend2")
 
 (map! :leader
       :desc "Launch WorldEnd2 menu"
@@ -37,8 +44,8 @@ There are a few variables that you can set, which are summarized in the followin
 
 *NOTE:* I have added zero-width spaces to the values in the ~Default~ column so that GitHub can display the code correctly.
 
-| Variable                               | Default                    | Description                                   |
-|----------------------------------------+----------------------------+-----------------------------------------------|
+| Variable                             | Default                     | Description                                   |
+|--------------------------------------+-----------------------------+-----------------------------------------------|
 | ~worldend2-git-repo~                   | ~​"​~/worldend2-formatting"​~ | Path to the git repository                    |
 | ~worldend2-venv-name~                  | ~​"worldend2-formatting"​~   | Name of the virtual environment               |
 | ~worldend2-default-pdf-view-method~    | ~​'emacs​~                   | Default method for viewing the generated PDF  |
@@ -48,24 +55,33 @@ There are a few variables that you can set, which are summarized in the followin
 
 Every variable except for ~worldend2-git-repo~ and ~worldend2-venv-name~ can be overridden at runtime using the Transient menu, by passing the value in when calling the function, or by pressing the universal argument (~C-u~) when calling interactively.
 
-There are 4 functions that you can use if you don't want to use the Transient menu (~worldend2-transient-menu~):
+There are 7 functions that you can use if you don't want to use the Transient menu (~worldend2-transient-menu~):
 
-| Function                    | Description                                                                                                                                                                           |
-|-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Function                  | Description                                                                                                                                                                         |
+|---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ~worldend2-generate-pdf~    | Generate the PDF for the specified volume number with optional extra arguments. If called with the universal argument (~C-u~), it prompts for both volume number and extra arguments. |
 | ~worldend2-generate-epub~   | Generate the PDF for the specified volume number with optional extra arguments. If called with the universal argument (~C-u~), it prompts for both volume number and extra arguments. |
-| ~worldend2-goto-directory~  | Go to the directory of the WorldEnd2 git repository.                                                                                                                                  |
-| ~worldend2-activate-venv~   | Activate the Python virtual environment for the WorldEnd2 git repository.                                                                                                             |
-| ~worldend2-deactivate-venv~ | Deactivate the Python virtual environment for the WorldEnd2 git repository.                                                                                                           |
+| ~worldend2-goto-directory~  | Go to the directory of the WorldEnd2 git repository.                                                                                                                                |
+| ~worldend2-activate-venv~   | Activate the Python virtual environment for the WorldEnd2 git repository.                                                                                                           |
+| ~worldend2-deactivate-venv~ | Deactivate the Python virtual environment for the WorldEnd2 git repository.                                                                                                         |
 | ~worldend2-view-pdf~        | View the PDF for the specified volume number with optional PDF viewer. If called with the universal argument (~C-u~), it prompts for both volume number and the PDF viewer.           |
 | ~worldend2-view-epub~       | View the EPUB for the specified volume number with optional EPUB viewer. If called with the universal argument (~C-u~), it prompts for both volume number and the EPUB viewer.        |
 
 ** Example Configuration
 *Doom Emacs*
 #+begin_src emacs-lisp
-(load! "lisp/worldend2/worldend2")
-(setq worldend2-git-repo (expand-file-name "~/worldend2-formatting"))
-(setq worldend2-venv-name "worldend2-formatting")
+;;; $DOOMDIR/packages.el -*- no-byte-compile: t; -*-
+
+(package! worldend2
+  :recipe (:host github :repo "Nyx102/worldend2.el"))
+#+end_src
+
+#+begin_src emacs-lisp
+;;; $DOOMDIR/init.el -*- lexical-binding: t; -*-
+
+(require 'worldend2)
+(setq worldend2-git-repo (expand-file-name "~/worldend-formatting"))
+(setq worldend2-venv-name "worldend-formatting")
 (setq worldend2-default-pdf-view-method "zathura") ; Default is 'emacs
 (setq worldend2-default-epub-view-method "ebook-viewer") ; Default is 'emacs
 
@@ -86,4 +102,4 @@ There are 4 functions that you can use if you don't want to use the Transient me
 #+end_src
 
 * License
-GNU GPLv3
+GNU General Public License v3.0 or later
