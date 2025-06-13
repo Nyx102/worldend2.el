@@ -229,6 +229,7 @@ the specified function."
    ("-p" "print mode" "--print-mode")
    ("-F" "no front cover" "--no-front-cover")
    ("-B" "no back cover" "--no-back-cover")
+   ("-N" "no inner bleed" "--no-inner-bleed")
    ("-G" "skip image generation" "--skip-image-generation")
    ("-I" "no images" "--no-images")]
   ["Help"
