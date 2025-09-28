@@ -219,6 +219,7 @@ the specified function."
 (transient-define-prefix worldend2--generate-pdf ()
   "WorldEnd2 Formatting submenu for generating PDF."
   ["Options"
+   ("-p" "print mode" "--print-mode")
    ("-b" "bleed size" "--bleed-size="
     :prompt "Enter bleed size: ")
    ("-g" "gutter size" "--gutter-size="
@@ -228,7 +229,6 @@ the specified function."
     :prompt "Enter xelatex command: ")
    ("-t" "version tag" "--version-tag="
     :prompt "Enter version tag: ")
-   ("-p" "print mode" "--print-mode")
    ("-F" "no front cover" "--no-front-cover")
    ("-B" "no back cover" "--no-back-cover")
    ("-N" "no inner bleed" "--no-inner-bleed")
