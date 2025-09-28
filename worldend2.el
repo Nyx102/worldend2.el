@@ -226,6 +226,8 @@ the specified function."
    ("-v" "verbose" "--verbose")
    ("-x" "xelatex command" "--xelatex-command-line="
     :prompt "Enter xelatex command: ")
+   ("-t" "version tag" "--version-tag="
+    :prompt "Enter version tag: ")
    ("-p" "print mode" "--print-mode")
    ("-F" "no front cover" "--no-front-cover")
    ("-B" "no back cover" "--no-back-cover")
